@@ -34,7 +34,7 @@
     "test:clean": "yarn build:clean && yarn test",
     "dev": "nodemon",
     "build": "tsc && yarn run build:esm-bundle",
-    "build:esm-bundle": "esbuild src/index.ts --bundle --format=esm --platform=node --target=esnext --minify --legal-comments=none --outfile=lib/bundle.esm.js",
+    "build:esm-bundle": "esbuild src/index.ts --bundle --format=esm --external:mock-aws-s3 --external:aws-sdk --external:nock --platform=node --target=esnext --minify --legal-comments=none --outfile=lib/bundle.esm.js",
     "build:clean": "rm -rf ./dist && rm -rf ./lib && node ./scripts/prebuild.js && yarn run build",
     "lint": "eslint ./src",
     "coveralls": "cat ./coverage/lcov.info | ./node_modules/.bin/coveralls",
